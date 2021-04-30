@@ -1,1 +1,2 @@
-wordmarker>=0.0.3
+wordmarker==0.0.4
+matplotlib==3.4.1
