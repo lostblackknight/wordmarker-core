@@ -228,6 +228,5 @@ template/**
 template/in
 template/out
 text/**
-main.py
 config.yaml
 *.whl
