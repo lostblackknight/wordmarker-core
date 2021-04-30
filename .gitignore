@@ -220,10 +220,14 @@ cython_debug/
 *.docx
 
 # 其他
+data/**
 data/in
 data/out
 img/**
+template/**
 template/in
 template/out
+text/**
 main.py
 config.yaml
+*.whl
