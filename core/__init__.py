@@ -1,17 +1,15 @@
+import os
 from docx.shared import Mm
 from docxtpl import R, InlineImage
+from wordmarker.contexts import WordMarkerContext
 from wordmarker.templates import CsvTemplate, PdbcTemplate, WordTemplate
 
-csv_tpl: CsvTemplate
-pdbc_tpl: PdbcTemplate
-word_tpl: WordTemplate
-
-
-def init():
-    global csv_tpl, pdbc_tpl, word_tpl
-    csv_tpl = CsvTemplate()
-    pdbc_tpl = PdbcTemplate()
-    word_tpl = WordTemplate()
+ctx = (os.path.abspath(os.path.curdir) + os.path.sep + 'config.yaml')
+word_marker_context = WordMarkerContext(ctx)
+csv_tpl = CsvTemplate()
+pdbc_tpl = PdbcTemplate()
+word_tpl = WordTemplate()
+tpl = word_tpl.tpl
 
 
 def data_base():
@@ -35,7 +33,6 @@ def __generate_text():
 
 def __generate_word():
     context = {
-        'page_break': R('\f'),
         'theme': '2017年航指数半年白皮书',
         'header': {
             'title': '导语：',
