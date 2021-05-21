@@ -224,7 +224,7 @@ data/**
 data/in
 data/out
 #img/**
-template/**
+#template/**
 #template/in
 template/out
 #text/**
