@@ -223,7 +223,7 @@ cython_debug/
 data/**
 data/in
 data/out
-img/**
+#img/**
 template/**
 #template/in
 template/out
