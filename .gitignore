@@ -225,8 +225,8 @@ data/in
 data/out
 img/**
 template/**
-template/in
+#template/in
 template/out
-text/**
+#text/**
 config.yaml
 *.whl
