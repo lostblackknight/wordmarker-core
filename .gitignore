@@ -223,6 +223,6 @@ cython_debug/
 data/**
 data/in
 data/out
-template/out
+#template/out
 config.yaml
 *.whl
