@@ -8,52 +8,92 @@ main:
       #3333333333333333333333333333333333333333333333333333
       景气指数:
         综述:
-          - '{{ year }}年上半年民航全市场景气指数稳步上升：国内航线{{ prosperity_index_in }}，国际航线{{ prosperity_index_out }}，港澳台航线{{ prosperity_index_hmt }}。'
+          - '{{ year }}年上半年民航全市场景气指数{{ prosperity_index_increase }}：国内航线{{ prosperity_index_in }}，国际航线{{ prosperity_index_out }}，港澳台航线{{ prosperity_index_hmt }}。'
         国内:
-          - '国内航线景气指数同比增幅为{{ prosperity_index_in_yoy }}，增速超{{ last_year }}年同期{{ prosperity_index_in_growth_rate }}个百分点，市场稳步上升。'
+          - '国内航线景气指数同比增幅为{{ prosperity_index_in_yoy }}%，增速较{{ last_year }}年同期{{ prosperity_index_in_compare }}{{ prosperity_index_in_growth_rate }}个百分点，市场{{ prosperity_index_in_stable }}。'
+          - '{{ year }}年国内航线景气指数与去年相比，同比增幅为{{ prosperity_index_in_yoy }}%，增速比{{ last_year }}年同期{{ prosperity_index_in_compare }}{{ prosperity_index_in_growth_rate }}个百分点，市场{{ prosperity_index_in_stable }}。'
+          - '{{ year }}年上半年国内航线景气指数的同比增幅为{{ prosperity_index_in_yoy }}%，增速与去年同相比{{ prosperity_index_in_compare }}{{ prosperity_index_in_growth_rate }}个百分点，市场{{ prosperity_index_in_stable }}。'
+          - '国内航线保持稳步上升趋势，景气指数为{{ prosperity_index_num }}，同比增幅{{ prosperity_index_in_yoy }}%。'
+          - '{{ year }}年国内航线与去年相比成稳步上升的趋势，今年的景气指数是{{ prosperity_index_num }}，同比增幅为{{ prosperity_index_in_yoy }}%。'
+          - '{{ year }}年上半年国内航线稳步上升，景气指数为{{ prosperity_index_num }}，与去年相比景气指数{{ prosperity_index_compare }}，同比增幅{{ prosperity_index_in_yoy }}%。'
+          - '国内航线景气指数同比增幅放缓至{{ prosperity_index_in_yoy }}%，巿场{{ prosperity_index_in_stable2 }}。'
+          - '{{ year }}年上半年国内航线景气指数同比增幅放缓至{{ prosperity_index_in_yoy }}%，巿场{{ prosperity_index_in_stable2 }}。'
+          - '{{ year }}年国内航线景气指数同比增幅放缓至{{ prosperity_index_in_yoy }}%，巿场{{ prosperity_index_in_stable2 }}。'
+          - '{{ year }}年国内航线为{{ prosperity_index_in }}，国内航线景气指数同比增幅为{{ prosperity_index_in_yoy }}%'
+          - '国内航线为{{ prosperity_index_in }}，同比增幅为{{ prosperity_index_in_yoy }}%。'
+          - '{{ year }}年上半年国内航线景气指数的同比增幅为{{ prosperity_index_in_yoy }}%，景气指数为{{ prosperity_index_num }}。'
+          - '国内航线景气指数的同比增幅为{{ prosperity_index_in_yoy }}%，景气指数为{{ prosperity_index_num }},增速比{{ last_year }}年同期{{ prosperity_index_in_compare }}{{ prosperity_index_in_growth_rate }}个百分点。'
         国际:
-          - '国际航线景气指数增速放缓，同比增幅放缓至{{ prosperity_index_out_yoy }}，但春节峰值周景气指数超越{{ last_year }}年峰值，达到{{ prosperity_index_out_peak }}，再创新高。'
+          - '{{ year }}年上半年国际航线持续高热，前半年景气指数为{{ prosperity_index_out_num }}，同比{{ prosperity_index_out_compare }}{{ prosperity_index_out_growth_rate }}个百分点。'
+          - '国际航线持续高热，上半年景气指数达{{ prosperity_index_out_num }}，同比与去年的景气指数{{ prosperity_index_out_compare }}{{ prosperity_index_out_growth_rate }}个百分点。'
+          - '{{ year }}年国际航线保持稳步上升趋势，前半年景气指数达{{ prosperity_index_out_num }}，同比{{ last_year }}年{{ prosperity_index_out_compare }}{{ prosperity_index_out_growth_rate }}个百分点。'
+          - '国际航线景气指数增速{{ prosperity_index_out_compare }}，同比增幅放缓至{{ prosperity_index_out_yoy }}%，但春节峰值周景气指数超越{{ last_year }}年峰值，达到{{ prosperity_index_out_peak }}，再创新高。'
+          - '今年的国际航线景气指数增速{{ prosperity_index_out_compare }}，同比增幅与去年放缓至{{ prosperity_index_out_yoy }}%，但春节峰值周景气指数超越{{ last_year }}年峰值，达到{{ prosperity_index_out_peak }}，再创新高。'
+          - '{{ year }}年国际航线景气指数增速{{ prosperity_index_out_compare }}，同比增幅与{{ last_year }}年放缓至{{ prosperity_index_out_yoy }}%，但春节峰值周景气指数超越{{ last_year }}年峰值，达到{{ prosperity_index_out_peak }}，再创新高。'
         港澳台:
-          - '港澳台航线景气指数同比小幅下降{{ prosperity_index_hmt_yoy }}个百分点，市场依然在复苏道路上缓慢挣扎。'
+          - '港澳台航线景气指数同比{{ prosperity_index_hmt_compare }}{{ prosperity_index_hmt_rate }}个百分点，市场依然在复苏道路上缓慢挣扎。'
+          - '港澳台航线景气指数同比{{ prosperity_index_hmt_compare }}{{ prosperity_index_hmt_rate }}%，市场表现良好，为近几年较高水平。'
+          - '港澳台航线巿场缓慢复苏，景气指数{{ prosperity_index_hmt_num }},同比{{ prosperity_index_hmt_compare }}{{ prosperity_index_hmt_rate }}个百分点,升至{{ year }}年来巿场高点，但增速远不及民航出人境巿场整体发展水平。'
+          - '{{ year }}年港澳台航线巿场缓慢复苏，景气指数{{ prosperity_index_hmt_num }},同比增幅为{{ prosperity_index_in_yoy }}%，市场的恢复速度正在增长。'
+          - '{{ year }}年上半年港澳台航线遇冷，景气指数{{ prosperity_index_hmt_num }}，较去年同期{{ prosperity_index_hmt_compare }}{{ prosperity_index_hmt_rate }}%。'
+          - '港澳台的航线保持稳步上升趋势，景气指数为{{ prosperity_index_hmt_num }}，同比增幅为{{ prosperity_index_in_yoy }}%，与去年相比同比{{ prosperity_index_hmt_yoy_compare }}{{ prosperity_index_hmt_yoy_rate }}%。'
       #3333333333333333333333333333333333333333333333333333
       量价指数:
         综述:
-          - '{{ year }}年上半年民航市场运输量指数整体上升；价格指数在国内、国际航线市场趋于稳定，在港澳台航线市场有所上升。'
+          - '{{ year }}年上半年民航市场运输量指数整体{{ volume_price_index_trend }}；价格指数在国内、国际航线市场趋于{{ volume_price_index_trend_in_out }}，港澳台航线市场有所{{ volume_price_index_trend_hmt }}。'
+          - '{{ year }}年上半年民航市场维持近年来量{{ volume_price_index_trend2 }}价{{ volume_price_index_trend3 }}的趋势，整体运输量指数为{{ volume_price_index }}，较{{ last_year }}年同期{{ volume_price_index_trend4 }}{{ volume_price_index_rate }}%，民航市场规模持续发生变化。'
+          - '{{ year }}年上半年民航巿场运输量指数与去年相比整体{{ volume_price_index_trend4 }}，价格指数在国际航线巿场出现持续性大幅{{ volume_price_index_trend5 }}。'
         国内:
-          - '国内航线运输量指数{{ traffic_index_in }}，同比增幅{{ traffic_index_in_yoy }}；价格指数{{ price_index_in }}，同比增长{{ price_index_in_yoy }}个百分点。'
+          - '国内航线运输量指数{{ traffic_index_in }}，同比增幅为{{ traffic_index_in_yoy }}%；价格指数{{ price_index_in }}，同比增幅为{{ price_index_in_yoy }}个百分点。'
+          - '国内航线运输量指数{{ traffic_index_in }}，同比{{ traffic_index_in_yoy_trend }}{{ traffic_index_in_yoy }}%；价格指数{{ price_index_in }}，同比{{ price_index_in_yoy_trend }}{{ price_index_in_yoy }}个百分点。'
+          - '{{ year }}年上半年国内航线运输量指数为{{ traffic_index_in }}，与去年相比同比{{ traffic_index_in_yoy_compare }}{{ traffic_index_in_yoy_rate }}%；价格指数为{{ price_index_in }}，同比增幅为{{ price_index_in_yoy }}个百分点。'
+          - '国内航线运输量指数为{{ traffic_index_in }}，同比增幅为{{ traffic_index_in_yoy }}%；价格指数为{{ price_index_in }}，与去年相比同比{{ price_index_in_yoy_compare }}{{ price_index_in_yoy_rate }}个百分点。'
+          - '国内航线运输量指数{{ traffic_index_in }},同期增幅{{ traffic_index_in_yoy }}%;价格相对稳定,{{ price_index_in_yoy_compare }}{{ price_index_in_yoy_rate }}个百分点。'
+          - '{{ year }}年上半年国内航线运输量指数{{ traffic_index_in }}，同比{{ traffic_index_in_yoy_trend }}{{ traffic_index_in_yoy }}%;价格指数{{ price_index_in }}，同比{{ price_index_in_yoy_trend }}{{ price_index_in_yoy }}%。'
         国际:
-          - '国际航线量价差距逐渐放缓，运输量指数增速放缓，但上半年运输量指数依然突破250大关，以{{ traffic_index_out_yoy }}的同比增幅升至{{ traffic_index_out }}；价格指数则趋于稳定，同比持平。'
+          - '国际航线量价差距逐渐放缓，运输量指数增速放缓，但上半年运输量指数依然突破200大关，以{{ traffic_index_out_yoy }}的同比增幅升至{{ traffic_index_out }}；价格指数则趋于稳定，同比持平。'
+          - '国际航线量价指数同比增幅为{{ traffic_index_out_yoy }}；价格指数的增速与去年相比{{ price_index_out_trend }}{{ price_index_out_yoy_rate }}%。'
+          - '国际航线量价差距进一步拉大，上半年运输量指数突破200大关，以{{ traffic_index_out_yoy }}%的同比增幅{{ traffic_index_out_trend }}冲至{{ traffic_index_out }};价格指数则再{{ price_index_out_compare }}{{ price_index_out_yoy }}%，{{ price_index_out_index }}。'
+          - '{{ year }}年上半年国际航线运输量指数突破200大关，以{{ traffic_index_out_yoy }}%的同比增幅{{ traffic_index_out_trend }}冲至{{ traffic_index_out }};价格指数与{{ last_year }}年相比{{ price_index_out_trend }}{{ price_index_out_yoy_rate }}%。'
         港澳台:
-          - '港澳台航线运输量指数{{ traffic_index_hmt }}，同比下降{{ traffic_index_hmt_yoy }}；价格指数{{ price_index_hmt }}，同比增幅{{ price_index_hmt_yoy }}，市场在复苏之路上缓慢前行。'
+          - '港澳台航线运输量指数{{ traffic_index_hmt }}，同比{{ traffic_index_hmt_yoy_compare }}{{ traffic_index_hmt_yoy }}%；价格指数{{ price_index_hmt }}，同比增幅{{ price_index_hmt_yoy }}%，市场在复苏之路上缓慢前行。'
+          - '港澳台航线运输量指数{{ traffic_index_hmt }}，恢复正向增长﹔价格指数增速与去年相比{{ price_index_hmt_yoy_compare }}{{ price_index_hmt_yoy_rate }}%，巿场正在缓慢的回复。'
+          - '{{ year }}年上半年港澳台航线运输量指数{{ traffic_index_hmt }}﹔价格指数同比增幅与去年相比{{ price_index_hmt_yoy_compare }}{{ price_index_hmt_yoy_rate }}%，巿场在复苏之路上缓慢前行。'
       #3333333333333333333333333333333333333333333333333333
       客座率指数:
         综述:
           - '{{ year }}年上半年市场客座率水平表现较为稳定，市场投放策略相对利好。'
         国内:
           - '国内航线客座率指数{{ passenger_loadFactor_index_in }}，国际航线客座率指数{{ passenger_loadFactor_index_out }}，均与{{ last_year }}年同期水平持平，产投比相对稳定。'
+          - '国内航线客座率为{{ passenger_loadFactor_index_in }}%，继续保持上升趋势。'
         国际:
-          - ''
+          - '国际航线客座率指数{{ passenger_loadFactor_index_out }}%，与{{ last_year }}年同期相比，有小幅{{ load_factor_compare_out }}。'
+          - '{{ year }}年国际航线客座率指数为{{ passenger_loadFactor_index_out }}%，同比增幅为{{ passenger_loadFactor_index_out_yoy }}%。'
+          - '{{ year }}年上半年国际航线客座率同比增幅为{{ passenger_loadFactor_index_out_yoy }}%，与去年同期相比，有小幅{{ passenger_loadFactor_index_out_compare }}。'
+          - '国际航线客座率同比增幅与{{ last_year }}年同期相比，同比{{ passenger_loadFactor_index_out_compare }}{{ passenger_loadFactor_index_out_rate }}。'
         港澳台:
-          - '港澳台航线客座率指数{{ passenger_loadFactor_index_hmt }}，较{{ last_year }}年同期上涨{{ passenger_loadFactor_index_hmt_yoy }}个百分点。'
+          - '港澳台航线客座率指数{{ passenger_loadFactor_index_hmt }}，较{{ last_year }}年同期{{ passenger_loadFactor_index_hmt_compare }}{{ passenger_loadFactor_index_hmt_rate }}个百分点。'
+          - '港澳台航线客座率指数{{ passenger_loadFactor_index_hmt }}%,较{{ last_year }}年{{ passenger_loadFactor_index_hmt_compare }}{{ passenger_loadFactor_index_hmt_rate }}个百分点，处于{{ passenger_loadFactor_index_hmt_height }}。'
+          - '{{ year }}年港澳台航线客座率指数{{ passenger_loadFactor_index_hmt }}%,较{{ last_year }}年同比增幅为{{ passenger_loadFactor_index_hmt_yoy }}%。'
     #222222222222222222222222222222222222222222222222222222
     上半年民航旅客规模及特征:
       #3333333333333333333333333333333333333333333333333333
       国内市场:
         国内市场旅客概况:
-          - '{{ year }}年上半年国内航线旅客规模{{ passenger_size_in }}，较{{ last_year }}年同期增长{{ passenger_size_in_yoy }}。但平均飞行距离由{{ last_year }}年同期的1246公里缩短到1237公里。'
-          - '国内航线人均重复购买率{{ repeat_purchase_rate_in }}，较{{ last_year }}年同期的{{ repeat_purchase_rate_in_last }}上升{{ repeat_purchase_rate_in_yoy }}次。'
+          - '{{ year }}年上半年国内航线旅客规模{{ passenger_size_in }}，较{{ last_year }}年同期{{ passenger_size_compare }}{{ passenger_size_in_yoy }}。平均飞行距离由{{ last_year }}年同期的{{ kilometer1 }}公里{{ passenger_size_compare2 }}到{{ kilometer2 }}公里。'
+          - '国内航线人均重复购买率{{ repeat_purchase_rate_in }}，较{{ last_year }}年同期的{{ repeat_purchase_rate_in_last }}{{ repeat_purchase_rate_in_compare }}{{ repeat_purchase_rate_in_yoy }}次。'
           - '旅客规模扩增、人均重复购买率几乎保持平稳，民航市场旅客覆盖面或将逐渐扩大化。'
         国内旅行者特征:
-          - '{{ year }}年上半年国内市场旅客性别比例基本与{{ last_year }}年同期保持稳定，男性旅客比例超女性{{ passenger_sex_ratio_in }}个百分点，依然占据市场主体优势。'
-          - '年龄分布方面有微小变化，24~30岁旅客出行比例同比下降{{ passenger_travel_ratio_24_30_in }}，而60岁以上旅客出行比例同比上升{{ passenger_travel_ratio_60_up_in }}，由航指数的节假日指数数据也可以看出60岁以上旅客在节假日出行比例上逐年上升，市场上层出不穷的“老年游”产品及充足的时间、良好的经济条件均促进了旅客的出游热情。'
-          - '上半年国内市场四成以上旅客提前预订天数 依然集中在航班起飞前3天内，但较{{ last_year }}年同期相比，提前1-3天预订的旅客比例下降{{ book_in_advance_1_3_in }}，提前16-30天预订的旅客比例上升{{ book_in_advance_16_30_in }}百分点。'
-          - '在国内市场中跟团出行市场比例较小，上半年仅有{{ travel_with_group_in }}的旅客出行选择了跟团，较{{ last_year }}年同期下降{{ travel_with_group_in_yoy }}；而在自由行旅客中超过半数为单独出行，1/4民航出行为双人结伴出行，两者较{{ last_year }}年同期均保持稳定。'
-          - '在值机环节虽然自助值机模式不断增加，柜台值机比例同比有{{ counter_check_in_yoy }}的下降，但目前仍是旅客首选。提前3小时以内值机旅客比例同比下降{{ counter_check_in_advance_3_in_yoy }}，但仍占据七成以上的高位。'
+          - '{{ year }}年上半年国内市场旅客性别比例基本与{{ last_year }}年同期保持稳定，男性旅客比例{{ passenger_sex_ratio_in_compare }}女性{{ passenger_sex_ratio_in }}个百分点，依然占据市场主体优势。'
+          - '年龄分布方面有微小变化，24~30岁旅客出行比例同比{{ passenger_travel_ratio_24_30_in_compare }}{{ passenger_travel_ratio_24_30_in }}%，而60岁以上旅客出行比例同比{{ passenger_travel_ratio_60_up_in_compare }}{{ passenger_travel_ratio_60_up_in }}%，由航指数的节假日指数数据也可以看出60岁以上旅客在节假日出行比例上逐年上升，市场上层出不穷的“老年游”产品及充足的时间、良好的经济条件均促进了旅客的出游热情。'
+          - '上半年国内市场四成以上旅客提前预订天数 依然集中在航班起飞前3天内，但较{{ last_year }}年同期相比，提前1-3天预订的旅客比例{{ book_in_advance_1_3_in_compare }}{{ book_in_advance_1_3_in }}%，提前16-30天预订的旅客比例{{ book_in_advance_16_30_in_compare }}{{ book_in_advance_16_30_in }}百分点。'
+          - '在国内市场中跟团出行市场比例较小，上半年仅有{{ travel_with_group_in }}%的旅客出行选择了跟团，较{{ last_year }}年同期{{ travel_with_group_in_yoy_compare }}{{ travel_with_group_in_yoy }}%；而在自由行旅客中超过半数为单独出行，1/4民航出行为双人结伴出行，两者较{{ last_year }}年同期均保持稳定。'
+          - '在值机环节虽然自助值机模式不断增加，柜台值机比例同比有{{ counter_check_in_yoy }}%的{{ counter_check_in_yoy_compare }}，但目前仍是旅客首选。提前3小时以内值机旅客比例同比{{ counter_check_in_advance_3_in_yoy_compare }}{{ counter_check_in_advance_3_in_yoy }}%，但仍占据七成以上的高位。'
       #3333333333333333333333333333333333333333333333333333
       国际市场:
         国际市场旅客概况:
-          - '{{ year }}年上半年民航国际航线旅客规模{{ passenger_size_out }}人，同比增幅{{ passenger_size_out_yoy }}，增速低于国内市场{{ passenger_size_out_growth_rate }}个百分点。平均飞行距离较{{ last_year }}年同期（{{ average_flight_distance_out_last }}）呈增长趋势，达到{{ average_flight_distance_out }}。'
-          - '国际航线旅客重复购买率{{ repeat_purchase_rate_out }}，继{{ last_year }}年上半年出现同比下降趋势后，{{ year }}年上半年同比呈现平稳状态，旅客出行习惯或将出现变动迹象。'
+          - '{{ year }}年上半年民航国际航线旅客规模{{ passenger_size_out }}人，同比增幅{{ passenger_size_out_yoy }}%，增速{{ passenger_size_out_compare }}国内市场{{ passenger_size_out_growth_rate }}个百分点。平均飞行距离较{{ last_year }}年同期（{{ average_flight_distance_out_last }}）呈{{ average_flight_distance_out_last_compare }}趋势，达到{{ average_flight_distance_out }}。'
+          - '国际航线旅客重复购买率{{ repeat_purchase_rate_out }}，继{{ last_year }}年上半年出现同比{{ repeat_purchase_rate_out_compare }}趋势后，{{ year }}年上半年同比呈现平稳状态，旅客出行习惯或将出现变动迹象。'
         国际旅行者特征:
           - '{{ year }}年上半年国际市场中以旅游为目的的民航旅客目的地偏好出现小范围变化，去往日韩朝的旅客除41~50年龄段比例有所上升外，其他年龄段同比降幅均在2%左右；各年龄段去往北美洲、东南亚及西南太平洋的旅客比例均有1%—4%不同程度的同比上升。'
           - '国际市场的提前预订周期明显长于国内市场，47%的旅客提前一个月开始预订，较{{ year }}年同期上升3个百分点。'
