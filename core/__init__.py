@@ -2,7 +2,6 @@ import os
 from docxtpl import DocxTemplate
 from wordmarker.contexts import WordMarkerContext
 from wordmarker.templates import CsvTemplate, PdbcTemplate, WordTemplate
-from core.text import text
 
 csv_tpl: CsvTemplate
 pdbc_tpl: PdbcTemplate

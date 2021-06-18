@@ -6,8 +6,11 @@ from core.data.data import ProsperityIndex, PassengerLoadFactor, VolumePriceInde
 
 
 class Data:
-    @staticmethod
-    def prosperity_index_in_number(year):
+
+    def __init__(self, d: dict):
+        self.__data = d
+
+    def prosperity_index_in_number(self, year):
         """
         .. note::
 
@@ -15,13 +18,12 @@ class Data:
 
         :return: 景气指数
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peek_average(year, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def prosperity_index_foreign_number(year):
+    def prosperity_index_foreign_number(self, year):
         """
         .. note::
 
@@ -29,13 +31,12 @@ class Data:
 
         :return: 景气指数
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peek_average(year, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def prosperity_index_hkm_number(year):
+    def prosperity_index_hkm_number(self, year):
         """
         .. note::
 
@@ -43,13 +44,12 @@ class Data:
 
         :return: 景气指数
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peek_average(year, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def maximum_Year():
+    def maximum_Year(self):
         """
         .. note::
 
@@ -57,7 +57,7 @@ class Data:
 
         :return: 最大年
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = pd.DataFrame(df)
         Max = pi['起飞年'].max()
         return Max - 1
@@ -84,18 +84,18 @@ class Data:
         :param result:  a
         :return: 数据上升还是下降
         """
-        goUp = ["上升", "上涨", "升高"]
+        goup = ["上升", "上涨", "升高"]
         drop = ["下降", "降低", "下滑"]
         if isinstance(result, dict):
             if result['Y'][0] > 0:
-                a = random.choice(goUp)
+                a = random.choice(goup)
                 return a
             else:
                 a = random.choice(drop)
                 return a
         else:
             if result > 0:
-                a = random.choice(goUp)
+                a = random.choice(goup)
                 return a
             else:
                 a = random.choice(drop)
@@ -109,7 +109,7 @@ class Data:
 
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peek_average(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.peek_average(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -125,7 +125,7 @@ class Data:
 
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peek_average(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.peek_average(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -141,7 +141,7 @@ class Data:
 
         :return: 景气指数同比增幅
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
@@ -155,7 +155,7 @@ class Data:
         :return: 景气指数同比增幅
          """
         # 当前使用国内数据
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
@@ -169,7 +169,7 @@ class Data:
         :return: 景气指数同比增幅
         """
         # 当前使用国内数据
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
@@ -182,7 +182,7 @@ class Data:
 
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -198,7 +198,7 @@ class Data:
 
         :return: 比较
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -214,7 +214,7 @@ class Data:
 
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peek_average(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.peek_average(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -230,7 +230,7 @@ class Data:
 
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -246,7 +246,7 @@ class Data:
 
         :return: 峰值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\景气指数_加盐.csv')
+        df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peak_max(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"M": [2]})
         return '%.2f' % ll['M'][0]
@@ -260,7 +260,7 @@ class Data:
         :param market_: 地区
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\市场数据_加盐.csv')
+        df = self.__data['市场数据']
         plf = PassengerLoadFactor(df)
         l = plf.peek_mean(self.maximum_Year() - 1, market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         ll = plf.peek_mean(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
@@ -276,7 +276,7 @@ class Data:
         :param market_: 地区
         :return: 差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\市场数据_加盐.csv')
+        df = self.__data['市场数据']
         plf = PassengerLoadFactor(df)
         l = plf.yoy(self.maximum_Year() - 1, market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         ll = plf.yoy(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
@@ -292,7 +292,7 @@ class Data:
         :param market_: 地区
         :return: 各地区客座率
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\市场数据_加盐.csv')
+        df = self.__data['市场数据']
         plf = PassengerLoadFactor(df)
         ll = plf.peek_mean(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
@@ -306,13 +306,12 @@ class Data:
         :param market_: 地区
         :return: 各地区客座率同比增幅
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\市场数据_加盐.csv')
+        df = self.__data['市场数据']
         plf = PassengerLoadFactor(df)
         ll = plf.yoy(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def volume_price_index_average(year, exponent):
+    def volume_price_index_average(self, year, exponent):
         """
           .. note::
 
@@ -322,13 +321,12 @@ class Data:
         :param exponent: 指数的索引
         :return: 平均值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\量价指数_加盐.csv')
+        df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.peak_average(year, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def volume_price_index_yoy(year, exponent):
+    def volume_price_index_yoy(self, year, exponent):
         """
           .. note::
 
@@ -338,13 +336,12 @@ class Data:
         :param exponent: 指数的索引
         :return: 同比增幅
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\量价指数_加盐.csv')
+        df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.yoy(year, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def volume_price_index_max(year, exponent):
+    def volume_price_index_max(self, year, exponent):
         """
           .. note::
 
@@ -354,13 +351,12 @@ class Data:
         :param exponent: 指数的索引
         :return: 最大值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\量价指数_加盐.csv')
+        df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.peak_max(year, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def volume_price_index_min(year, exponent):
+    def volume_price_index_min(self, year, exponent):
         """
           .. note::
 
@@ -370,7 +366,7 @@ class Data:
         :param exponent: 指数的索引
         :return: 最小值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\量价指数_加盐.csv')
+        df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.peak_min(year, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
@@ -384,7 +380,7 @@ class Data:
         :param exponent: 指数的索引
         :return: 变化趋势的差值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\量价指数_加盐.csv')
+        df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.peak_average(self.maximum_Year() - 1, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = plf.peak_average(self.maximum_Year(), exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -400,7 +396,7 @@ class Data:
         :param exponent: 指数的索引
         :return: 变化趋势
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\量价指数_加盐.csv')
+        df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.peak_average(self.maximum_Year() - 1, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = plf.peak_average(self.maximum_Year(), exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
@@ -408,8 +404,7 @@ class Data:
         result = self.increase(difference)
         return result
 
-    @staticmethod
-    def passengerSize(counts, year):
+    def passengerSize(self, counts, year):
         """
           .. note::
 
@@ -419,7 +414,7 @@ class Data:
         :param counts: 索引
         :return: 旅客规模
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\旅客规模_加盐.csv')
+        df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.peak_sum(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
         return ll['Y'][0]
@@ -433,13 +428,12 @@ class Data:
         :param counts: 索引
         :return: 同比增幅
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\旅客规模_加盐.csv')
+        df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.yoy(self.maximum_Year(), counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def passenger_size_average(year, counts):
+    def passenger_size_average(self, year, counts):
         """
           .. note::
 
@@ -449,13 +443,12 @@ class Data:
         :param counts: 索引
         :return: 国内外旅客规模平均公里
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\旅客规模_加盐.csv')
+        df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.peak_average(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
         return round(ll['Y'][0])
 
-    @staticmethod
-    def repeat_purchase_rate_per_capita(year, counts):
+    def repeat_purchase_rate_per_capita(self, year, counts):
         """
           .. note::
 
@@ -465,13 +458,12 @@ class Data:
         :param counts: 索引
         :return: 国内外航线人均重复购买率
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\旅客规模_加盐.csv')
+        df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.peak_average(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def tourism_characteristics_average(year, counts):
+    def tourism_characteristics_average(self, year, counts):
         """
           .. note::
 
@@ -481,13 +473,12 @@ class Data:
         :param counts: 索引
         :return: 旅客特征各项的平均值
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\旅客特征_加盐.csv')
+        df = self.__data['旅客特征']
         plf = PassengerCharacteristics(df)
         ll = plf.peak_average(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
 
-    @staticmethod
-    def tourism_characteristics_yoy(year, counts):
+    def tourism_characteristics_yoy(self, year, counts):
         """
           .. note::
 
@@ -497,7 +488,7 @@ class Data:
         :param counts: 索引
         :return: 旅客特征各项的同比增幅
         """
-        df = pd.read_csv('E:\PyCharmProjects\wordmarker-core\data\in\旅客特征_加盐.csv')
+        df = self.__data['旅客特征']
         plf = PassengerCharacteristics(df)
         ll = plf.yoy(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
         return '%.2f' % ll['Y'][0]
