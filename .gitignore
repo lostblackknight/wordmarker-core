@@ -212,17 +212,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# 忽略csv文件
-*.csv
-
-# 忽略doc/docx文件
-#*.doc
-#*.docx
-
 # 其他
-data/**
-data/in
-data/out
 template/out
 config.yaml
 *.whl
