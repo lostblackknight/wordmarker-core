@@ -81,7 +81,7 @@ main:
       国内市场:
         国内市场旅客概况:
           - '{{ year }}年上半年国内航线旅客规模{{ passenger_size_in }}，较{{ last_year }}年同期{{ passenger_size_compare }}{{ passenger_size_in_yoy }}。平均飞行距离由{{ last_year }}年同期的{{ kilometer1 }}公里{{ passenger_size_compare2 }}到{{ kilometer2 }}公里。'
-          - '国内航线人均重复购买率{{ repeat_purchase_rate_in }}，较{{ last_year }}年同期的{{ repeat_purchase_rate_in_last }}{{ repeat_purchase_rate_in_compare }}{{ repeat_purchase_rate_in_yoy }}次。'
+          - '国内航线人均重复购买率{{ repeat_purchase_rate_in }}，较{{ last_year }}年同期的({{ repeat_purchase_rate_in_last }}){{ repeat_purchase_rate_in_compare }}{{ repeat_purchase_rate_in_yoy }}次。'
           - '旅客规模扩增、人均重复购买率几乎保持平稳，民航市场旅客覆盖面或将逐渐扩大化。'
         国内旅行者特征:
           - '{{ year }}年上半年国内市场旅客性别比例基本与{{ last_year }}年同期保持稳定，男性旅客比例{{ passenger_sex_ratio_in_compare }}女性{{ passenger_sex_ratio_in }}个百分点，依然占据市场主体优势。'

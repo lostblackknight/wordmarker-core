@@ -144,7 +144,7 @@ class Data:
         df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def prosperity_index_foreign_yoy(self):
         """
@@ -158,7 +158,7 @@ class Data:
         df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def prosperity_index_hkm_yoy(self):
         """
@@ -172,7 +172,7 @@ class Data:
         df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def domestic_prosperity_index_yoy_compare(self):
         """
@@ -187,7 +187,7 @@ class Data:
         ll = pi.yoy(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         difference = lll['Y'][0] - ll['Y'][0]
-        result = '%.2f' % difference
+        result = '%.2f' % abs(difference)
         return result
 
     def domestic_prosperity_index_yoy(self):
@@ -219,7 +219,7 @@ class Data:
         ll = pi.peek_average(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.peek_average(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         difference = lll['Y'][0] - ll['Y'][0]
-        result = '%.2f' % difference
+        result = '%.2f' % abs(difference)
         return result
 
     def hkm_prosperity_index_yoy_compare(self):
@@ -235,7 +235,7 @@ class Data:
         ll = pi.yoy(self.maximum_Year() - 1, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = pi.yoy(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         difference = lll['Y'][0] - ll['Y'][0]
-        result = '%.2f' % difference
+        result = '%.2f' % abs(difference)
         return result
 
     def foreign_springFestival_max(self):
@@ -249,7 +249,7 @@ class Data:
         df = self.__data['景气指数']
         pi = ProsperityIndex(df, "景气指数")
         ll = pi.peak_max(self.maximum_Year(), ref_type="W", ref_label='起飞星期', req={"M": [2]})
-        return '%.2f' % ll['M'][0]
+        return '%.2f' % abs(ll['M'][0])
 
     def passenger_load_factor(self, market_):
         """
@@ -265,7 +265,7 @@ class Data:
         l = plf.peek_mean(self.maximum_Year() - 1, market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         ll = plf.peek_mean(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         dif = ll['Y'][0] - l['Y'][0]
-        return '%.2f' % dif
+        return '%.2f' % abs(dif)
 
     def passenger_load_factor_yoy_compare(self, market_):
         """
@@ -281,7 +281,7 @@ class Data:
         l = plf.yoy(self.maximum_Year() - 1, market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         ll = plf.yoy(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
         dif = ll['Y'][0] - l['Y'][0]
-        return '%.2f' % dif
+        return '%.2f' % abs(dif)
 
     def passenger_load_factor_index(self, market_):
         """
@@ -295,7 +295,7 @@ class Data:
         df = self.__data['市场数据']
         plf = PassengerLoadFactor(df)
         ll = plf.peek_mean(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def passenger_load_factor_yoy(self, market_):
         """
@@ -309,7 +309,7 @@ class Data:
         df = self.__data['市场数据']
         plf = PassengerLoadFactor(df)
         ll = plf.yoy(self.maximum_Year(), market=market_, ref_type='M', ref_label='month_id', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def volume_price_index_average(self, year, exponent):
         """
@@ -324,7 +324,7 @@ class Data:
         df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.peak_average(year, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def volume_price_index_yoy(self, year, exponent):
         """
@@ -339,7 +339,7 @@ class Data:
         df = self.__data['量价指数']
         plf = VolumePriceIndex(df)
         ll = plf.yoy(year, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def volume_price_index_max(self, year, exponent):
         """
@@ -385,7 +385,7 @@ class Data:
         ll = plf.peak_average(self.maximum_Year() - 1, exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         lll = plf.peak_average(self.maximum_Year(), exponent, ref_type="W", ref_label='起飞星期', req={"Y": [1]})
         result = lll['Y'][0] - ll['Y'][0]
-        return '%.2f' % result
+        return '%.2f' % abs(result)
 
     def volume_price_index_trend(self, exponent):
         """
@@ -417,7 +417,7 @@ class Data:
         df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.peak_sum(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
-        return ll['Y'][0]
+        return abs(ll['Y'][0])
 
     def passenger_size_yoy(self, counts):
         """
@@ -431,7 +431,7 @@ class Data:
         df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.yoy(self.maximum_Year(), counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def passenger_size_average(self, year, counts):
         """
@@ -461,7 +461,7 @@ class Data:
         df = self.__data['旅客规模']
         plf = PassengerSize(df)
         ll = plf.peak_average(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def tourism_characteristics_average(self, year, counts):
         """
@@ -476,7 +476,7 @@ class Data:
         df = self.__data['旅客特征']
         plf = PassengerCharacteristics(df)
         ll = plf.peak_average(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])
 
     def tourism_characteristics_yoy(self, year, counts):
         """
@@ -491,4 +491,4 @@ class Data:
         df = self.__data['旅客特征']
         plf = PassengerCharacteristics(df)
         ll = plf.yoy(year, counts, ref_type="M", ref_label='month_id', req={"Y": [1]})
-        return '%.2f' % ll['Y'][0]
+        return '%.2f' % abs(ll['Y'][0])

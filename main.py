@@ -6,9 +6,9 @@ if __name__ == '__main__':
     # 初始化应用上下文
     core.init_context("config.yaml")
     # 数据库构建脚本
-    scripts.init_data_base(core.csv_tpl, core.pdbc_tpl)
+    # scripts.init_data_base(core.csv_tpl, core.pdbc_tpl)
     # 生成图片脚本
-    scripts.generate_img(core.word_tpl)
+    # scripts.generate_img(core.word_tpl)
     # 生成文本脚本
     text = scripts.TextConverter(core.word_tpl, Data({
         '城市数据': core.pdbc_tpl.query_table("t_city_data"),

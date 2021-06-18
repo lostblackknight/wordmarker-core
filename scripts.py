@@ -1189,7 +1189,7 @@ class TextConverter(AbstractConverter):
         """
         this_year = self.data.repeat_purchase_rate_per_capita(self.data.maximum_Year(), 7)
         last_year = self.data.repeat_purchase_rate_per_capita(self.data.maximum_Year() - 1, 7)
-        return '%.2f' % (float(this_year) - float(last_year))
+        return '%.2f' % abs((float(this_year) - float(last_year)))
 
     def passenger_sex_ratio_in_compare(self):
         """
