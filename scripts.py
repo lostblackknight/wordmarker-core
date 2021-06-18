@@ -17,6 +17,10 @@ def init_data_base(csv_tpl: CsvTemplate, pdbc_tpl: PdbcTemplate):
     pdbc_tpl.update_table(data_dict['日均旅客量.csv'], "t_average_daily_passenger_volume")
 
 
+def generate_img(word_tpl: WordTemplate):
+    print(word_tpl.img_out_path)
+
+
 def generate_word(word_tpl: WordTemplate, file_name: str, text: AbstractConverter):
     context = {
         'theme': text.get_value("meta.title"),

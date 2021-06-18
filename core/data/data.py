@@ -1031,6 +1031,7 @@ class PassengerSize(MathOperation, DateUtils):
 
         旅客规模
     """
+
     def __init__(self, df: DataFrame, passenger_volume='旅客量', off_kilometers='客公里',
                  repeat_purchase_rate='重复购买率', domestic_market_passenger_volume='国内市场旅客量',
                  international_market_passenger_volume='国际市场旅客量', domestic_market_passenger_kilometers=
@@ -1345,6 +1346,7 @@ class PassengerCharacteristics(MathOperation, DateUtils):
 
         旅客特征
     """
+
     def __init__(self, df: DataFrame, percentage_of_males_on_domestic_routes='国内航线男比例',
                  proportion_of_women_on_domestic_routes='国内航线女比例', age_24_30_on_domestic_routes='国内航线年龄24-30',
                  age_60_on_domestic_routes='国内航线年龄60+', domestic_flight_booking_1_3_in_advance=
@@ -1587,7 +1589,10 @@ class PassengerCharacteristics(MathOperation, DateUtils):
             self.__exponent[counts]].sum()
         previous = self.__df[self.__df[year_label].isin([year - 1]) & self.__df[ref_label].isin(ref_type_data)][
             self.__exponent[counts]].sum()
-        return ((current - previous) / previous) * 100
+        if previous != 0:
+            return ((current - previous) / previous) * 100
+        else:
+            return 0
 
     def __peek_max(self, year_label, year, ref_label, ref_type_data, counts):
         """
