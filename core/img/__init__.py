@@ -82,7 +82,7 @@ class ProsperityIndex(Chart):
         self.ax_list[0].plot(range(len(self.__x)), self.__y, color='orange')
         self.ax_list[0].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[0].patch.set_facecolor("black")
-        self.ax_list[0].set_title("景气指数")
+        self.ax_list[0].set_title("景气指数", fontdict={'size': 40})
 
 
 class PassengerLoadFactor(Chart):
@@ -136,7 +136,7 @@ class PassengerLoadFactor(Chart):
         self.ax_list[0].plot(range(len(self.__x_inland)), self.__y_inland, color='orange')
         self.ax_list[0].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[0].patch.set_facecolor("black")
-        self.ax_list[0].set_title("客座率指数")
+        self.ax_list[0].set_title("客座率指数", fontdict={'size': 40})
 
         self.ax_list[1].plot(range(len(self.__x_inland)), self.__y_international, color='orange')
         self.ax_list[1].grid(axis="y", linestyle='--')  # 网格
@@ -196,7 +196,7 @@ class PriceIndex(Chart):
         self.ax_list[0].plot(range(len(self.__x_inland)), self.__y2_inland)
         self.ax_list[0].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[0].patch.set_facecolor("black")
-        self.ax_list[0].set_title("客座率指数")
+        self.ax_list[0].set_title("量价指数", fontdict={'size': 40})
 
         self.ax_list[1].plot(range(len(self.__x_inland)), self.__y_international, color='orange')
         self.ax_list[1].plot(range(len(self.__x_inland)), self.__y2_international)
@@ -223,7 +223,7 @@ class InternationalTraveler(Chart):
         self.fig.set_size_inches(20, 15)  # 设置大小
         self.fig.set_dpi(80)  # 设置dpi
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
-        plt.suptitle("2017年上半年民航国际旅行者特征")
+        plt.suptitle("2017年上半年民航国际旅行者特征", fontdict={'size': 40})
         self.fig.gca()
         self.fig.subplots_adjust(wspace=None, hspace=0.15)  # 调整布局
 
@@ -311,7 +311,7 @@ class DomesticTraveler(Chart):
         self.fig.set_size_inches(20, 15)  # 设置大小
         self.fig.set_dpi(80)  # 设置dpi
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
-        plt.suptitle("2017年上半年民航国内旅行者特征")
+        plt.suptitle("2017年上半年民航国内旅行者特征", fontdict={'size': 40})
         self.fig.gca()
         self.fig.subplots_adjust(wspace=None, hspace=0.15)  # 调整布局
 
@@ -447,7 +447,7 @@ class InlandAviation(Chart):
 
     def _set_fig(self):
         # 设置图像的属性
-        self.fig.set_size_inches(20, 3)  # 设置大小
+        self.fig.set_size_inches(20, 10)  # 设置大小
         self.fig.set_dpi(80)  # 设置dpi
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
 
@@ -468,7 +468,7 @@ class InlandAviation(Chart):
         self.ax_list[0].axis('tight')
         self.ax_list[0].axis('off')
         self.ax_list[0].table(cellText=self.data, colLabels=self.labels, loc="center")
-        self.ax_list[0].set_title("2017年上半年民航国内市场旅客概况")
+        self.ax_list[0].set_title("2017年上半年民航国内市场旅客概况", fontdict={'size': 40})
 
 
 class InternationalAviation(Chart):
@@ -481,7 +481,7 @@ class InternationalAviation(Chart):
 
     def _set_fig(self):
         # 设置图像的属性
-        self.fig.set_size_inches(20, 3)  # 设置大小
+        self.fig.set_size_inches(20, 10)  # 设置大小
         self.fig.set_dpi(80)  # 设置dpi
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
 
@@ -502,4 +502,4 @@ class InternationalAviation(Chart):
         self.ax_list[0].axis('tight')
         self.ax_list[0].axis('off')
         self.ax_list[0].table(cellText=self.data, colLabels=self.labels, loc="center")
-        self.ax_list[0].set_title("2017年上半年民航国际市场旅客概况")
+        self.ax_list[0].set_title("2017年上半年民航国际市场旅客概况", fontdict={'size': 40})
