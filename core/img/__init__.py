@@ -83,6 +83,10 @@ class ProsperityIndex(Chart):
         self.ax_list[0].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[0].patch.set_facecolor("black")
         self.ax_list[0].set_title("景气指数", fontdict={'size': 40})
+        for self.size in self.ax_list[0].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
+        self.ax_list[0].set_xticks([])
 
 
 class PassengerLoadFactor(Chart):
@@ -137,14 +141,26 @@ class PassengerLoadFactor(Chart):
         self.ax_list[0].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[0].patch.set_facecolor("black")
         self.ax_list[0].set_title("客座率指数", fontdict={'size': 40})
+        for self.size in self.ax_list[0].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
+        self.ax_list[0].set_xticks([])
 
         self.ax_list[1].plot(range(len(self.__x_inland)), self.__y_international, color='orange')
         self.ax_list[1].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[1].patch.set_facecolor("black")
+        for self.size in self.ax_list[1].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
+        self.ax_list[1].set_xticks([])
 
         self.ax_list[2].plot(range(len(self.__x_inland)), self.__y_HongKong, color='orange')
         self.ax_list[2].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[2].patch.set_facecolor("black")  # 背景色
+        self.ax_list[2].set_xticks([])
+        for self.size in self.ax_list[2].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
         self.ax_list[2].set_xticks([])
 
 
@@ -197,16 +213,28 @@ class PriceIndex(Chart):
         self.ax_list[0].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[0].patch.set_facecolor("black")
         self.ax_list[0].set_title("量价指数", fontdict={'size': 40})
+        for self.size in self.ax_list[0].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
+        self.ax_list[0].set_xticks([])
 
         self.ax_list[1].plot(range(len(self.__x_inland)), self.__y_international, color='orange')
         self.ax_list[1].plot(range(len(self.__x_inland)), self.__y2_international)
         self.ax_list[1].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[1].patch.set_facecolor("black")
+        for self.size in self.ax_list[1].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
+        self.ax_list[1].set_xticks([])
 
         self.ax_list[2].plot(range(len(self.__x_inland)), self.__y_HongKong, color='orange')
         self.ax_list[2].plot(range(len(self.__x_inland)), self.__y2_HongKong)
         self.ax_list[2].grid(axis="y", linestyle='--')  # 网格
         self.ax_list[2].patch.set_facecolor("black")  # 背景色
+        self.ax_list[2].set_xticks([])
+        for self.size in self.ax_list[2].get_yticklabels():  # 获取y轴上所有坐标，并设置字号
+            self.size.set_fontname(' Microsoft YaHei')  # 雅黑
+            self.size.set_fontsize('18')
         self.ax_list[2].set_xticks([])
 
 
