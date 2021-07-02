@@ -486,7 +486,10 @@ class InlandAviation(Chart):
 
     def _process_df(self):
         # 处理数据，生成建立ax所需的参数
-        self.data = [[7857, 1237, 2.66]]
+        #self.df.loc[self.df['year_id'] == 2017, '旅客量'].mean()
+        self.data = [[ self.df.loc[self.df['year_id'] == 2017, '国内市场旅客量'].mean()/10000,
+                      self.df.loc[self.df['year_id'] == 2017, '国内市场客公里'].mean(),
+                      self.df.loc[self.df['year_id'] == 2017, '国内市场重复购买率'].mean()]]
         self.labels = ["人数（万）",
                        "平均飞行距离（公里）",
                        "重复购买率"]
@@ -520,7 +523,9 @@ class InternationalAviation(Chart):
 
     def _process_df(self):
         # 处理数据，生成建立ax所需的参数
-        self.data = [[1667, 3243, 1.93]]
+        self.data = [[self.df.loc[self.df['year_id'] == 2017, '国际市场旅客量'].mean()/1000,
+                      self.df.loc[self.df['year_id'] == 2017, '国际市场客公里'].mean(),
+                      self.df.loc[self.df['year_id'] == 2017, '国际市场重复购买率'].mean()]]
         self.labels = ["人数（万）",
                        "平均飞行距离（公里）",
                        "重复购买率"]

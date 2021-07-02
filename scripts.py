@@ -30,9 +30,9 @@ def generate_img(word_tpl: WordTemplate, data_dict: dict):
     # 国内旅行者
     DomesticTraveler(data_dict['旅客特征']).build(word_tpl.img_out_path + "/2017年上半年民航国内旅行者特征.png")
     # 国内民航表格
-    InlandAviation(None).build(word_tpl.img_out_path + "/2017年上半年民航国内市场旅客概况.png")
+    InlandAviation(data_dict['旅客规模']).build(word_tpl.img_out_path + "/2017年上半年民航国内市场旅客概况.png")
     # 国际民航表格
-    InternationalAviation(None).build(word_tpl.img_out_path + "/2017年上半年民航国际市场旅客概况.png")
+    InternationalAviation(data_dict['旅客规模']).build(word_tpl.img_out_path + "/2017年上半年民航国际市场旅客概况.png")
 
 
 def generate_word(word_tpl: WordTemplate, file_name: str, text: AbstractConverter):
