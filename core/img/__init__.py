@@ -300,7 +300,7 @@ class InternationalTraveler(Chart):
 
         self.ax_list[0].set_title('国际市场旅客目的地偏好')
 
-        self.ax_list[1].bar(range(len(self.ax2_data)), self.ax2_data, tick_label=self.ax2_labels)
+        self.ax_list[1].bar(range(len(self.ax2_data)), self.ax2_data, tick_label=self.ax2_labels,color=['r','g','b','c','m','y','k'])
         self.ax_list[1].set_title('提前预定天数分布')
 
         self.ax_list[2].explode = (0, 0)
@@ -308,7 +308,7 @@ class InternationalTraveler(Chart):
                             shadow=True, startangle=90)
         self.ax_list[2].set_title('团队散客比例')
 
-        self.ax_list[3].barh(self.ax4_y_pos, self.ax4_performance, align='center')
+        self.ax_list[3].barh(self.ax4_y_pos, self.ax4_performance, align='center',color=['g','y','c','m','r','k'])
         self.ax_list[3].set_yticks(self.ax4_y_pos)
         self.ax_list[3].set_yticklabels(self.ax4_people)
         self.ax_list[3].invert_yaxis()
@@ -322,7 +322,7 @@ class InternationalTraveler(Chart):
                                                        textprops=dict(color="w"))
         self.ax_list[4].legend(wedges, self.ax5_ingredients,
                                loc="center left",
-                               bbox_to_anchor=(1, 0, 0.5, 1))
+                               bbox_to_anchor=(1, 0, 0.5, 1),)
         self.ax_list[4].set_title("国际提前值机时间分布")
 
 
@@ -409,13 +409,13 @@ class DomesticTraveler(Chart):
                             shadow=True, startangle=90)
         self.ax_list[0].set_title('性别分布')
 
-        self.ax_list[1].bar(range(len(self.ax2_data)), self.ax2_data, tick_label=self.ax2_labels)
+        self.ax_list[1].bar(range(len(self.ax2_data)), self.ax2_data, tick_label=self.ax2_labels,color=['r','g','c','m','y','k','b'])
         self.ax_list[1].set_title('年龄分布')
 
-        self.ax_list[2].bar(range(len(self.ax3_data)), self.ax3_data, tick_label=self.ax3_labels)
+        self.ax_list[2].bar(range(len(self.ax3_data)), self.ax3_data, tick_label=self.ax3_labels,color=['r','g','c','m','y','k','b'])
         self.ax_list[2].set_title('提前预定天数分布')
 
-        self.ax_list[3].barh(self.ax4_y_pos, self.ax4_performance, align='center')
+        self.ax_list[3].barh(self.ax4_y_pos, self.ax4_performance, align='center',color=['g','y','c','m','r'])
         self.ax_list[3].set_yticks(self.ax4_y_pos)
         self.ax_list[3].set_yticklabels(self.ax4_people)
         self.ax_list[3].invert_yaxis()
@@ -475,7 +475,7 @@ class InlandAviation(Chart):
 
     def _set_fig(self):
         # 设置图像的属性
-        self.fig.set_size_inches(20, 10)  # 设置大小
+        self.fig.set_size_inches(10, 5)  # 设置大小
         self.fig.set_dpi(80)  # 设置dpi
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
 
@@ -486,10 +486,9 @@ class InlandAviation(Chart):
 
     def _process_df(self):
         # 处理数据，生成建立ax所需的参数
-        #self.df.loc[self.df['year_id'] == 2017, '旅客量'].mean()
-        self.data = [[ self.df.loc[self.df['year_id'] == 2017, '国内市场旅客量'].mean()/10000,
-                      self.df.loc[self.df['year_id'] == 2017, '国内市场客公里'].mean(),
-                      self.df.loc[self.df['year_id'] == 2017, '国内市场重复购买率'].mean()]]
+        self.data = [[int(self.df.loc[self.df['year_id'] == 2017, '国内市场旅客量'].mean()/10000),
+                      int(self.df.loc[self.df['year_id'] == 2017, '国内市场客公里'].mean()),
+                      round(self.df.loc[self.df['year_id'] == 2017, '国内市场重复购买率'].mean(),2)]]
         self.labels = ["人数（万）",
                        "平均飞行距离（公里）",
                        "重复购买率"]
@@ -498,7 +497,7 @@ class InlandAviation(Chart):
         # 设置ax_list中ax的样式，并添加数据
         self.ax_list[0].axis('tight')
         self.ax_list[0].axis('off')
-        self.ax_list[0].table(cellText=self.data, colLabels=self.labels, loc="center")
+        self.ax_list[0].table(cellText=self.data,colLabels=self.labels,cellLoc="center",loc="center")
         self.ax_list[0].set_title("2017年上半年民航国内市场旅客概况", fontdict={'size': 40})
 
 
@@ -512,7 +511,7 @@ class InternationalAviation(Chart):
 
     def _set_fig(self):
         # 设置图像的属性
-        self.fig.set_size_inches(20, 10)  # 设置大小
+        self.fig.set_size_inches(10, 5)  # 设置大小
         self.fig.set_dpi(80)  # 设置dpi
         plt.rcParams['font.sans-serif'] = ['SimHei']  # 中文乱码
 
@@ -523,9 +522,9 @@ class InternationalAviation(Chart):
 
     def _process_df(self):
         # 处理数据，生成建立ax所需的参数
-        self.data = [[self.df.loc[self.df['year_id'] == 2017, '国际市场旅客量'].mean()/1000,
-                      self.df.loc[self.df['year_id'] == 2017, '国际市场客公里'].mean(),
-                      self.df.loc[self.df['year_id'] == 2017, '国际市场重复购买率'].mean()]]
+        self.data = [[int(self.df.loc[self.df['year_id'] == 2017, '国际市场旅客量'].mean()/1000),
+                      int(self.df.loc[self.df['year_id'] == 2017, '国际市场客公里'].mean()),
+                      round(self.df.loc[self.df['year_id'] == 2017, '国际市场重复购买率'].mean(),2)]]
         self.labels = ["人数（万）",
                        "平均飞行距离（公里）",
                        "重复购买率"]
@@ -534,5 +533,5 @@ class InternationalAviation(Chart):
         # 设置ax_list中ax的样式，并添加数据
         self.ax_list[0].axis('tight')
         self.ax_list[0].axis('off')
-        self.ax_list[0].table(cellText=self.data, colLabels=self.labels, loc="center")
+        self.ax_list[0].table(cellText=self.data, colLabels=self.labels,cellLoc="center", loc="center")
         self.ax_list[0].set_title("2017年上半年民航国际市场旅客概况", fontdict={'size': 40})
