@@ -1,6 +1,7 @@
 import pandas as pd
 from pandas import DataFrame
 from calendar import Calendar
+import numpy as np
 
 
 class DateUtils:
@@ -404,6 +405,117 @@ class ProsperityIndex(MathOperation, DateUtils):
             self.__prosperity_index_label].mean()
 
 
+class prosperity_index_forecast:
+    """
+        ::
+
+            关于景气指数的预测
+
+    """
+
+    @staticmethod
+    def this_year_index(i):
+        """
+         .. note::
+
+             获得今年上半年的景气指数
+
+        :param i:  第i周
+        :return:  今年上半年的景气指数
+        """
+        arr = []
+        df = pd.read_csv('景气指数_加盐.csv')
+        for x in range(1, 26):
+            ll = df['景气指数'].loc[(df['起飞年'] == 2017) & (df['起飞星期'] == x)]
+            arr.append(ll.iloc[0])
+        return arr[i]
+
+    @staticmethod
+    def last_year_index(i):
+        """
+         .. note::
+
+             获得去年下半年的景气指数
+
+        :param i:  第i周
+        :return:  去年下半年的景气指数
+        """
+        arr = []
+        df = pd.read_csv('景气指数_加盐.csv')
+        for x in range(26, 54):
+            ll = df['景气指数'].loc[(df['起飞年'] == 2016) & (df['起飞星期'] == x)]
+            arr.append(ll.iloc[0])
+        return arr[i]
+
+    def calculate_the_prosperity_index(self):
+        """
+         .. note::
+
+             计算未来下半年的景气指数
+
+        :return: 下半年的景气指数
+        """
+        # 方差
+        vars = np.var(
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+             29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53], ddof=1)
+        # 协方差
+        covs = \
+            np.cov(
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28
+                    , 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53],
+                [
+                    self.this_year_index(0), self.this_year_index(1), self.this_year_index(2), self.this_year_index(3),
+                    self.this_year_index(4), self.this_year_index(5), self.this_year_index(6), self.this_year_index(7),
+                    self.this_year_index(8), self.this_year_index(9), self.this_year_index(10), self.this_year_index(11)
+                    , self.this_year_index(12), self.this_year_index(13), self.this_year_index(14),
+                    self.this_year_index(15), self.this_year_index(16), self.this_year_index(17),
+                    self.this_year_index(18), self.this_year_index(19),
+                    self.this_year_index(20), self.this_year_index(21), self.this_year_index(22),
+                    self.this_year_index(23), self.this_year_index(24),
+                    self.last_year_index(0), self.last_year_index(1), self.last_year_index(2), self.last_year_index(3),
+                    self.last_year_index(4), self.last_year_index(5), self.last_year_index(6), self.last_year_index(7),
+                    self.last_year_index(8), self.last_year_index(9), self.last_year_index(10),
+                    self.last_year_index(11),
+                    self.last_year_index(12), self.last_year_index(13), self.last_year_index(14),
+                    self.last_year_index(15), self.last_year_index(16), self.last_year_index(17),
+                    self.last_year_index(18), self.last_year_index(19),
+                    self.last_year_index(20), self.last_year_index(21), self.last_year_index(22),
+                    self.last_year_index(23), self.last_year_index(24),
+                    self.last_year_index(25), self.last_year_index(26)])[0][1]
+
+        x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+             29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+        y = [self.this_year_index(0), self.this_year_index(1), self.this_year_index(2), self.this_year_index(3),
+             self.this_year_index(4), self.this_year_index(5), self.this_year_index(6), self.this_year_index(7),
+             self.this_year_index(8), self.this_year_index(9), self.this_year_index(10), self.this_year_index(11),
+             self.this_year_index(12), self.this_year_index(13), self.this_year_index(14),
+             self.this_year_index(15), self.this_year_index(16), self.this_year_index(17),
+             self.this_year_index(18), self.this_year_index(19),
+             self.this_year_index(20), self.this_year_index(21), self.this_year_index(22),
+             self.this_year_index(23), self.this_year_index(24),
+             self.last_year_index(0), self.last_year_index(1), self.last_year_index(2), self.last_year_index(3),
+             self.last_year_index(4), self.last_year_index(5), self.last_year_index(6), self.last_year_index(7),
+             self.last_year_index(8), self.last_year_index(9), self.last_year_index(10), self.last_year_index(11),
+             self.last_year_index(12), self.last_year_index(13), self.last_year_index(14),
+             self.last_year_index(15), self.last_year_index(16), self.last_year_index(17),
+             self.last_year_index(18), self.last_year_index(19),
+             self.last_year_index(20), self.last_year_index(21), self.last_year_index(22),
+             self.last_year_index(23), self.last_year_index(24),
+             self.last_year_index(25), self.last_year_index(26)]
+        # 系数 β
+        β = covs / vars
+        y_average = sum(y) / len(y)
+        x_average = sum(x) / len(x)
+        # 系数α
+        α = y_average - β * x_average
+        arr = []
+        for x in range(26, 54):
+            prosperity_index = α + β * x
+            arr.append(round(prosperity_index, 2))
+        return arr
+
+
 class VolumePriceIndex(MathOperation, DateUtils):
     """
     ::
@@ -657,6 +769,148 @@ class VolumePriceIndex(MathOperation, DateUtils):
         """
         return self.__df[self.__df[year_label].isin([year]) & self.__df[ref_label].isin(ref_type_data)][
             self.__exponent[counts]].mean()
+
+
+class volume_price_index_forecast:
+    """
+          ::
+
+              关于量价指数的预测
+
+    """
+
+    @staticmethod
+    def this_year_index(directory, i):
+        """
+         .. note::
+
+             获得今年上半年的量价指数
+
+        :param directory: 索引
+        :param i: 第几周
+        :return: 今年上半年的量价指数
+        """
+        arr = []
+        df = pd.read_csv('量价指数_加盐.csv')
+        for x in range(1, 26):
+            ll = df[directory].loc[(df['起飞年'] == 2017) & (df['起飞星期'] == x)]
+            arr.append(ll.iloc[0])
+        return arr[i]
+
+    @staticmethod
+    def last_year_index(directory, i):
+        """
+         .. note::
+
+             获得去年下半年的量价指数
+
+        :param directory: 索引
+        :param i: 第几周
+        :return: 去年下半年的量价指数
+        """
+        arr = []
+        df = pd.read_csv('量价指数_加盐.csv')
+        for x in range(26, 54):
+            ll = df[directory].loc[(df['起飞年'] == 2016) & (df['起飞星期'] == x)]
+            arr.append(ll.iloc[0])
+        return arr[i]
+
+    def volume_price_index_forecast(self, directory):
+        """
+         .. note::
+
+             预测下半年的量价指数
+
+        :param directory: 索引
+        :return: 下半年的量价指数
+        """
+        vars = np.var(
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+             29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53], ddof=1)
+        covs = np.cov([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+                29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53], [
+                   self.this_year_index(directory, 0), self.this_year_index(directory, 1),
+                   self.this_year_index(directory, 2),
+                   self.this_year_index(directory, 3), self.this_year_index(directory, 4),
+                   self.this_year_index(directory, 5), self.this_year_index(directory, 6),
+                   self.this_year_index(directory, 7),
+                   self.this_year_index(directory, 8), self.this_year_index(directory, 9),
+                   self.this_year_index(directory, 10), self.this_year_index(directory, 11),
+                   self.this_year_index(directory, 12),
+                   self.this_year_index(directory, 13),
+                   self.this_year_index(directory, 14),
+                   self.this_year_index(directory, 15), self.this_year_index(directory, 16),
+                   self.this_year_index(directory, 17),
+                   self.this_year_index(directory, 18),
+                   self.this_year_index(directory, 19),
+                   self.this_year_index(directory, 20), self.this_year_index(directory, 21),
+                   self.this_year_index(directory, 22),
+                   self.this_year_index(directory, 23),
+                   self.this_year_index(directory, 24),
+                   self.last_year_index(directory, 0), self.last_year_index(directory, 1),
+                   self.last_year_index(directory, 2),
+                   self.last_year_index(directory, 3), self.last_year_index(directory, 4),
+                   self.last_year_index(directory, 5), self.last_year_index(directory, 6),
+                   self.last_year_index(directory, 7),
+                   self.last_year_index(directory, 8), self.last_year_index(directory, 9),
+                   self.last_year_index(directory, 10), self.last_year_index(directory, 11),
+                   self.last_year_index(directory, 12),
+                   self.last_year_index(directory, 13),
+                   self.last_year_index(directory, 14),
+                   self.last_year_index(directory, 15), self.last_year_index(directory, 16),
+                   self.last_year_index(directory, 17),
+                   self.last_year_index(directory, 18),
+                   self.last_year_index(directory, 19),
+                   self.last_year_index(directory, 20), self.last_year_index(directory, 21),
+                   self.last_year_index(directory, 22),
+                   self.last_year_index(directory, 23),
+                   self.last_year_index(directory, 24),
+                   self.last_year_index(directory, 25), self.last_year_index(directory, 26)])[0][1]
+
+        x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+             29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+        y = [self.this_year_index(directory, 0), self.this_year_index(directory, 1), self.this_year_index(directory, 2),
+             self.this_year_index(directory, 3), self.this_year_index(directory, 4),
+             self.this_year_index(directory, 5), self.this_year_index(directory, 6), self.this_year_index(directory, 7),
+             self.this_year_index(directory, 8), self.this_year_index(directory, 9),
+             self.this_year_index(directory, 10), self.this_year_index(directory, 11),
+             self.this_year_index(directory, 12),
+             self.this_year_index(directory, 13),
+             self.this_year_index(directory, 14),
+             self.this_year_index(directory, 15), self.this_year_index(directory, 16),
+             self.this_year_index(directory, 17),
+             self.this_year_index(directory, 18),
+             self.this_year_index(directory, 19),
+             self.this_year_index(directory, 20), self.this_year_index(directory, 21),
+             self.this_year_index(directory, 22),
+             self.this_year_index(directory, 23),
+             self.this_year_index(directory, 24),
+             self.last_year_index(directory, 0), self.last_year_index(directory, 1), self.last_year_index(directory, 2),
+             self.last_year_index(directory, 3), self.last_year_index(directory, 4),
+             self.last_year_index(directory, 5), self.last_year_index(directory, 6), self.last_year_index(directory, 7),
+             self.last_year_index(directory, 8), self.last_year_index(directory, 9),
+             self.last_year_index(directory, 10), self.last_year_index(directory, 11),
+             self.last_year_index(directory, 12),
+             self.last_year_index(directory, 13),
+             self.last_year_index(directory, 14),
+             self.last_year_index(directory, 15), self.last_year_index(directory, 16),
+             self.last_year_index(directory, 17),
+             self.last_year_index(directory, 18),
+             self.last_year_index(directory, 19),
+             self.last_year_index(directory, 20), self.last_year_index(directory, 21),
+             self.last_year_index(directory, 22),
+             self.last_year_index(directory, 23),
+             self.last_year_index(directory, 24),
+             self.last_year_index(directory, 25), self.last_year_index(directory, 26)]
+        β = covs / vars
+        y_average = sum(y) / len(y)
+        x_average = sum(x) / len(x)
+        α = y_average - β * x_average
+        arr = []
+        for x in range(26, 54):
+            traffic_index = α + β * x
+            arr.append(round(traffic_index, 2))
+        return arr
 
 
 class PassengerLoadFactor(MathOperation, DateUtils):
